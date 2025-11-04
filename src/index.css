@@ -1,68 +1,58 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+:root{
+  --p1: #EAAF4E;
+  --p2: #FFD394;
+  --p3: #CF9644;
+  --db: #503629;
+  --s1: #F9DDB7;
+  --s2: #FDF0DF;
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+body {
+  @apply bg-white text-[--db] font-body;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+/* Card visual */
+.card {
+  background: linear-gradient(180deg, rgba(249,221,183,0.45), white);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  box-shadow: 0 8px 28px rgba(80,54,41,0.08);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(180deg, var(--p1), var(--p3));
+  color: white;
+  padding: .72rem 1.15rem;
+  border-radius: .75rem;
+  box-shadow: 0 6px 14px rgba(80,54,41,0.12);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.btn-primary:active{ transform: translateY(1px) scale(.998); }
+.btn-ghost {
+  border: 2px solid var(--db);
+  background: transparent;
+  color: var(--db);
+  padding: .6rem 1rem;
+  border-radius: .6rem;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+/* Inputs */
+.input {
+  @apply border rounded-md px-3 py-2 w-full;
+  border-color: rgba(80,54,41,0.12);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+/* Progress */
+.progress { height: .5rem; background: rgba(0,0,0,0.06); border-radius: 999px; overflow: hidden; }
+.progress > .bar { height: 100%; background: linear-gradient(90deg,var(--p1),var(--p3)); transition: width .36s ease; }
+
+/* Modal */
+.modal-backdrop { background: rgba(0,0,0,0.5); }
+.modal { background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 12px 36px rgba(80,54,41,0.16); }

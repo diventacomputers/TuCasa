@@ -1,0 +1,116 @@
+import React, { useState } from 'react'
+import Step1Welcome from './steps/Step1Welcome'
+import Step2Document from './steps/Step2Document'
+import Step3Hello from './steps/Step3Hello'
+import Step4HasHome from './steps/Step4HasHome'
+import Step5Benefits from './steps/Step5Benefits'
+import Step6Subsidy from './steps/Step6Subsidy'
+import Step7Types from './steps/Step7Types'
+import Step8Budget from './steps/Step8Budget'
+import Step9Finance from './steps/Step9Finance'
+import Step10Extras from './steps/Step10Extras'
+import Step11Final from './steps/Step11Final'
+
+const stepsOrder = [
+  'welcome','doc','hello','hasHome','benefits_or_next','subsidy','types','budget','finance','extras','final'
+]
+
+export default function Survey(){
+  const [index, setIndex] = useState(0)
+  const [data, setData] = useState({
+    document: '',
+    name: 'SANTIAGO', // por ahora simulado; luego lo obtendrás desde backend
+    hasHome: null, // 'si' | 'no' | 'parcialmente'
+    // respuestas de pantallas adicionales
+    incomesUnder4SM: null,
+    householdNucleus: null,
+    allBeneficiariesAffiliated: null,
+    memberOwnsHome: null,
+    hadSubsidyBefore: null,
+    affiliatedToCaja: null,
+    typeOfHousing: null,
+    budgetChoice: null
+  })
+  const [modal, setModal] = useState({open:false, content:''})
+
+  const goTo = (id) => {
+    const idx = stepsOrder.indexOf(id)
+    if(idx>=0) setIndex(idx)
+  }
+  const next = () => setIndex(i => Math.min(i+1, stepsOrder.length-1))
+  const prev = () => setIndex(i => Math.max(i-1, 0))
+
+  const update = (patch) => setData(d => ({...d,...patch}))
+
+  // lógica de flujo: después de P4 (hasHome)
+  const handleAfterHasHome = (val) => {
+    update({ hasHome: val })
+    if(val === 'si'){
+      // ir a beneficios y luego final
+      goTo('benefits_or_next')
+    } else {
+      // si no o parcialmente: ir a subsidy (pantalla 6)
+      goTo('subsidy')
+    }
+  }
+
+  // navegación desde "benefits_or_next": mostramos Step5 y luego vamos a final
+  // implementado en Step5 con next()
+
+  const percent = Math.round((index)/(stepsOrder.length-1)*100)
+
+  return (
+    <div>
+      <div className="mb-4">
+        <div className="flex justify-between items-center gap-4">
+          <div className="text-sm font-medium" style={{color:'#503629'}}>
+            {['Bienvenida','Documento','Hola','Vivienda','Beneficios / Siguiente','Subsidio','Tipos','Presupuesto','Finanzas','Extras','Final'][index]}
+          </div>
+          <div className="text-xs opacity-60">{index+1}/{stepsOrder.length}</div>
+        </div>
+        <div className="mt-2 progress">
+          <div className="bar" style={{width: `${percent}%`}} />
+        </div>
+      </div>
+
+      <div className="min-h-[320px]">
+        {index === 0 && <Step1Welcome next={next} />}
+        {index === 1 && <Step2Document data={data} update={update} next={() => goTo('hello')} />}
+        {index === 2 && <Step3Hello data={data} next={() => goTo('hasHome')} />}
+        {index === 3 && <Step4HasHome onChoose={handleAfterHasHome} prev={() => goTo('doc')} />}
+        {index === 4 && data.hasHome === 'si' && <Step5Benefits next={() => goTo('final')} prev={() => goTo('hasHome')} />}
+        {index === 5 && <Step6Subsidy data={data} update={update} next={() => goTo('types')} openModal={(content)=>setModal({open:true,content})} prev={() => goTo('hasHome')} />}
+        {index === 6 && <Step7Types data={data} update={update} next={() => goTo('budget')} prev={() => goTo('subsidy')} />}
+        {index === 7 && <Step8Budget data={data} update={update} next={() => goTo('finance')} prev={() => goTo('types')} />}
+        {index === 8 && <Step9Finance data={data} update={update} next={() => goTo('extras')} prev={() => goTo('budget')} />}
+        {index === 9 && <Step10Extras data={data} update={update} next={() => goTo('final')} prev={() => goTo('finance')} />}
+        {index === 10 && <Step11Final data={data} prev={() => {
+          // si venimos de rama propietario, volver a benefits, si no, a extras
+          if(data.hasHome === 'si') goTo('benefits_or_next')
+          else goTo('extras')
+        }} />}
+      </div>
+
+      {/* controles generales: si estamos en Step5 pero hasHome no es si, evita mostrar */}
+      <div className="mt-6 flex justify-between items-center">
+        <button onClick={prev} className={`btn-ghost ${index===0 ? 'opacity-50 pointer-events-none' : ''}`}>Volver</button>
+        <div className="text-sm opacity-70">Progreso {percent}%</div>
+        <div className="w-28" />
+      </div>
+
+      {/* modal */}
+      {modal.open && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="absolute inset-0 bg-black opacity-50" onClick={()=>setModal({open:false,content:''})}></div>
+          <div className="relative bg-white rounded-lg p-6 max-w-xl w-full shadow-lg">
+            <h3 className="text-lg font-semibold" style={{color:'#503629'}}>Atención</h3>
+            <div className="mt-3">{modal.content}</div>
+            <div className="mt-4 flex justify-end">
+              <button onClick={()=>setModal({open:false,content:''})} className="btn-primary">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
