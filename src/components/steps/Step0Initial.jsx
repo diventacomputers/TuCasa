@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Step1Welcome.css";
+import "./Step0Initial.css";
 
 export default function Step0Initial({ next }) {
   const [showLogos, setShowLogos] = useState(true);
@@ -20,9 +20,9 @@ export default function Step0Initial({ next }) {
   }, [showLogos, next]);
 
   return (
-    <div className="welcome-container">
+    <div className="welcome-container0">
       {/* Logo superior derecho */}
-      <div className="welcome-header">
+      <div className="welcome-header0">
         <img
           src="/src/assets/logos/Logo Moneda - Tu Casa.png"
           alt="logo tu casa tu futuro"
@@ -31,7 +31,7 @@ export default function Step0Initial({ next }) {
 
       {/* Transición: logos → texto */}
       <div
-        className={`welcome-transition ${showLogos ? "show-logos" : "show-text"}`}
+        className={`welcome-transition0 ${showLogos ? "show-logos0" : "show-text0"}`}
       >
         {showLogos ? (
           <div className="welcome-content0">
@@ -50,7 +50,7 @@ export default function Step0Initial({ next }) {
             </div>
           </div>
         ) : (
-          <div className="welcome-message">
+          <div className="welcome-message0">
             ¡En <span>Crepes & Waffles</span> <br />
             queremos ayudarte a cumplir <br />
             tus metas y objetivos!
