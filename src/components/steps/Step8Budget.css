@@ -1,126 +1,327 @@
+/* Variables de color basadas en la imagen */
 :root {
   --background-color: #f8f0e5; /* Fondo crema */
-  --text-color: #503629;       /* Marrón oscuro */
-  --accent-color: #e5a44a;     /* Mostaza cálido */
-  --button-bg: #f0c377;        /* Botón beige-mostaza */
-  --button-hover: #f5d197;     /* Hover claro */
-  --card-bg: #ffffff;
+  --text-color: #503629;       /* Marrón oscuro principal */
+  --accent-color-light: #f0c377; /* Botón/Card Mostaza claro (1) */
+  --accent-color-dark: #503629;  /* Botón/Card Marrón oscuro (2) */
+  --accent-color-orange: #e5a44a; /* Botón/Card Naranja (3, Continuar) */
   --border-color: #e3c9a8;
 }
 
-/* Contenedor principal */
-.step8-budget {
+/* 1. Contenedor de la página completa para el layout flex */
+.step8-budget-page {
   background-color: var(--background-color);
   min-height: 100vh;
-  padding: 3rem 2rem;
+  display: flex; /* Usamos flexbox para colocar la ilustración y el contenido */
+  justify-content: center;
+  align-items: flex-start; /* Alinea al inicio verticalmente */
+  padding: 20px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: var(--text-color);
+}
+
+/* Wrapper para el contenido principal (burbuja, tarjetas, botones) */
+.main-content-wrapper {
+    display: flex;
+    max-width: 1200px; /* Ancho máximo similar al diseño original */
+    width: 100%;
+    position: relative;
+    padding-top: 50px; /* Espacio para que la burbuja no choque con el top */
+}
+
+/* Contenedor de la ilustración de la señora */
+.woman-illustration-container {
+    flex-shrink: 0; /* Evita que la imagen se encoja */
+    width: 250px; /* Ancho fijo para la ilustración */
+    margin-right: -50px; /* Superponer ligeramente con la burbuja */
+    position: relative;
+    z-index: 10; /* Asegura que esté por encima si hay superposición */
+    padding-top: 100px; /* Empuja la ilustración hacia abajo */
+}
+
+.woman-illustration {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 2. Contenedor de las opciones y burbuja (antes .step8-budget-container) */
+/* Ahora se encarga solo de la burbuja, tarjetas y botones */
+.step8-budget-container {
+    flex-grow: 1; /* Permite que este contenedor tome el espacio restante */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 20px; /* Espacio entre la ilustración y el contenido */
+}
+
+
+/* 2. Burbuja de diálogo (Speech Bubble) */
+.speech-bubble-wrapper {
+    width: 100%;
+    max-width: 700px; /* Ajustado para el nuevo layout */
+    margin-bottom: 40px; /* Más espacio abajo */
+    position: relative;
+}
+
+.speech-bubble {
+  background-color: #fff;
+  color: var(--text-color);
+  padding: 20px 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-size: 1.15rem;
+  line-height: 1.4;
+  position: relative;
+  text-align: center;
+  font-weight: 400;
+}
+
+/* Cola de la burbuja (apuntando a la figura de la izquierda) */
+.speech-bubble::before {
+    content: '';
+    position: absolute;
+    top: 60px; /* Ajustado para que apunte a la cabeza/hombro de la señora */
+    left: -20px; /* Posición horizontal */
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-right-color: #fff; /* El color de la burbuja */
+    border-left: 0;
+    z-index: 20; /* Asegura que la cola esté por encima de la ilustración si hay conflicto */
+}
+
+/* 3. Contenedor de opciones (Grid) */
+.options-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
+}
+
+/* 4. Tarjetas de opción */
+.option-card {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  color: var(--text-color);
-  font-family: 'Segoe UI', Arial, sans-serif;
-}
-
-/* Título */
-.step8-budget h3 {
-  font-size: 1.4rem;
-  font-weight: 700;
+  justify-content: space-between;
+  padding: 30px 15px;
+  border-radius: 12px;
   text-align: center;
-  margin-bottom: 2rem;
-}
-
-/* Contenedor de opciones */
-.step8-budget .grid {
-  width: 100%;
-  max-width: 800px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-}
-
-/* Tarjetas */
-.step8-budget .grid > div {
-  background-color: var(--card-bg);
-  border: 2px solid var(--border-color);
-  border-radius: 14px;
-  padding: 1.8rem 1.2rem;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-}
-
-.step8-budget .grid > div:hover {
-  transform: translateY(-5px);
-  border-color: var(--accent-color);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
-}
-
-/* Títulos de las tarjetas */
-.step8-budget h4 {
-  color: var(--text-color);
-  font-weight: 700;
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Texto descriptivo */
-.step8-budget p {
-  color: var(--text-color);
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-/* Botones principales */
-.btn-primary {
-  background-color: var(--button-bg);
-  color: var(--text-color);
-  font-weight: 700;
-  border: none;
-  border-radius: 30px;
-  padding: 0.7rem 1.5rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  min-height: 250px; 
+  width: 30%; 
 }
 
-.btn-primary:hover {
-  background-color: var(--button-hover);
+.option-card:hover {
+    transform: translateY(-3px);
 }
 
-/* Botón volver */
-.btn-ghost {
-  background: none;
-  border: none;
-  color: var(--accent-color);
-  font-weight: 600;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: color 0.3s ease;
+.card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 10px;
 }
 
-.btn-ghost:hover {
-  color: var(--text-color);
+.card-subtitle {
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: auto; 
+    padding: 0 10px;
 }
 
-/* Footer */
-.step8-budget .mt-6 {
-  width: 100%;
-  max-width: 800px;
-  display: flex;
-  justify-content: flex-start;
-  margin-top: 2.5rem;
+/* Estilos específicos de cada tarjeta */
+.option-card-light {
+    background-color: var(--accent-color-light); 
+    color: var(--text-color);
+}
+
+.option-card-dark {
+    background-color: var(--accent-color-dark); 
+    color: white; 
+}
+
+.option-card-orange {
+    background-color: var(--accent-color-orange); 
+    color: var(--text-color); 
+}
+
+/* Botones dentro de las tarjetas */
+.action-button-wrapper {
+    width: 100%;
+    padding-top: 20px;
+}
+.card-button {
+    font-weight: 700;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 80%;
+    max-width: 200px;
+}
+
+.card-button-light {
+    background-color: #fff;
+    color: var(--text-color);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-button-dark {
+    background-color: var(--accent-color-orange); 
+    color: white; 
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-button-orange {
+    background-color: #fff;
+    color: var(--text-color);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 5. Bloque de botones inferiores */
+.bottom-actions {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    justify-content: center; 
+    gap: 15px;
+    margin-top: 50px; 
+}
+
+/* Botón "Volver" */
+.button-volver {
+    background-color: var(--accent-color-light); 
+    color: var(--text-color);
+    font-weight: 700;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 30px;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+.button-volver:hover {
+    background-color: #e3a95d;
+}
+
+/* Botón "Continuar" (combinado con el texto) */
+.button-continuar-wrapper {
+    background-color: var(--accent-color-orange);
+    color: var(--text-color);
+    font-weight: 700;
+    border-radius: 30px;
+    padding: 10px 20px;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    position: relative;
+    padding-right: 50px; 
+    transition: background-color 0.3s;
+}
+
+.button-continuar-wrapper:hover {
+    background-color: #f7b863;
+}
+
+.hand-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 25px;
+    height: 25px;
+    background-color: var(--text-color);
+    border-radius: 50%;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 0% 75%); 
 }
 
 /* Adaptación móvil */
-@media (max-width: 600px) {
-  .step8-budget {
-    padding: 2rem 1rem;
+@media (max-width: 768px) {
+  .main-content-wrapper {
+      flex-direction: column; /* Coloca la ilustración arriba en móvil */
+      align-items: center;
+      padding-top: 20px;
+  }
+  .woman-illustration-container {
+      width: 150px; /* Más pequeña en móvil */
+      margin-right: 0;
+      margin-bottom: 20px; /* Espacio debajo de la ilustración */
+      padding-top: 0;
+  }
+  .woman-illustration {
+      width: 100%;
   }
 
-  .step8-budget h3 {
-    font-size: 1.2rem;
+  .step8-budget-container {
+      padding-left: 0;
+      width: 100%; /* Ocupa todo el ancho disponible */
   }
 
-  .btn-primary {
-    width: 100%;
+  .speech-bubble-wrapper {
+      margin-bottom: 30px;
+      width: 95%; /* Un poco más de margen */
   }
+  .speech-bubble::before {
+      display: none; /* Oculta la cola en móvil si apunta al lado */
+      /* O ajusta su posición para que apunte hacia abajo si lo prefieres */
+      /* top: 100%; left: 50%; transform: translateX(-50%) rotate(90deg); border-right-color: transparent; border-top-color: #fff; */
+  }
+
+  .options-grid {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+  .option-card {
+    width: 90%;
+    min-height: auto;
+  }
+  .bottom-actions {
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+  }
+  .button-volver, .button-continuar-wrapper {
+      width: 90%;
+      max-width: 300px;
+      justify-content: center;
+      padding-right: 20px; 
+  }
+  .hand-icon {
+      right: 15px;
+  }
+  .speech-bubble {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+    .speech-bubble {
+        padding: 15px 20px;
+        font-size: 0.9rem;
+    }
+    .card-title {
+        font-size: 1rem;
+    }
+    .card-subtitle {
+        font-size: 0.85rem;
+    }
+    .card-button {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+    .button-volver, .button-continuar-wrapper {
+        font-size: 1rem;
+        padding: 8px 15px;
+    }
 }
