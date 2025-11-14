@@ -4,16 +4,43 @@ import './Step9Finance.css'
 export default function Step9Finance({ data, next, prev }) {
   return (
     <div className="step9-finance">
-      <h3>¡Hagamos cuentas!</h3>
-      <div className="mt-2">
-        <p>100% del valor del inmueble = 30% cuota inicial + 70% crédito hipotecario.</p>
-        <p className="mt-2">Recuerda: tu cuota no debe superar 30%-40% de tus ingresos.</p>
-      </div>
+      <h3 className="title">¡Hagamos cuentas!</h3>
+      
+      {/* Diagrama de la imagen */}
+      <div className="finance-diagram">
+        {/* Bloque superior */}
+        <div className="block-top">
+          100% del Valor total del inmueble
+        </div>
 
-      <div className="mt-6">
-        <button onClick={prev} className="btn-ghost">Volver</button>
-        <button onClick={next} className="btn-primary">Siguiente</button>
+        {/* Conectores */}
+        <div className="connectors">
+          <div className="line-h"></div>
+          <div className="line-v-left"></div>
+          <div className="line-v-right"></div>
+        </div>
+
+        {/* Bloques inferiores */}
+        <div className="blocks-bottom">
+          <div className="block-left">
+            <span className="label">Cuota inicial</span>
+            <span className="percentage-box initial-percentage">30%</span>
+          </div>
+
+          <div className="block-right">
+            <span className="label">Crédito hipotecario</span>
+            <span className="percentage-box credit-percentage">70%</span>
+          </div>
+        </div>
       </div>
+      
+      {/* Botón Volver (lo dejo fuera del contenedor de botones para que se parezca más a la imagen) */}
+      <button onClick={prev} className="btn-volver">Volver</button>
+      
+      {/* El botón "Siguiente" no está en la imagen, pero lo mantengo oculto o lo elimino si solo quieres el diseño */}
+      {/* <div className="mt-6">
+          <button onClick={next} className="btn-primary">Siguiente</button>
+      </div> */}
     </div>
   )
 }
