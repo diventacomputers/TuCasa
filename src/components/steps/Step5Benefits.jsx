@@ -1,29 +1,60 @@
 import React from 'react'
+import './Step5Benefits.css'
 
-export default function Step5Benefits({ next, prev }){
+import mejoraViviendaBox from '../../assets/Cajas/Caja 1.png'
+import mejoraViviendaTool from '../../assets/Iconos/Icono 4.png'
+import mejoraViviendaFolio from '../../assets/Iconos/Icono 5.png'
+import mejoraViviendaMoney from '../../assets/Iconos/Icono 6.png'
+
+export default function Step5Benefits({ next, prev }) {
   return (
-    <div className="space-y-4">
-      <h3 className="text-xl font-semibold" style={{color:'#503629'}}>¡Como ya cuentas con vivienda propia, tenemos estos beneficios para ti!</h3>
-      <div className="grid sm:grid-cols-3 gap-4 mt-3">
-        <div className="p-3 bg-[--s2] rounded-md">
-          <h4 className="font-semibold">Mejora de vivienda</h4>
-          <p className="text-sm mt-1">Asesoría y subsidios para mejorar tu vivienda actual.</p>
+    <div className="container-benefits">
+
+      <h3 className="title-benefits">
+        ¡Como ya cuentas con vivienda propia,
+        <br />
+        tenemos estos beneficios para ti!
+      </h3>
+
+      <div className="cards-grid">
+
+        {/* Tarjeta 1 */}
+        <div className="card">
+          <img src={mejoraViviendaBox} className="card-box" />
+          <img src={mejoraViviendaTool} className="card-icon" />
+          <h4 className="card-title">Mejora de vivienda</h4>
+          <p className="card-text">
+            Conoce y solicita los subsidios para mejorar tu vivienda.
+          </p>
         </div>
-        <div className="p-3 bg-[--s2] rounded-md">
-          <h4 className="font-semibold">Legalización de Documentos</h4>
-          <p className="text-sm mt-1">Pon al día escrituras, impuestos y otros documentos.</p>
+
+        {/* Tarjeta 2 */}
+        <div className="card">
+          <img src={mejoraViviendaBox} className="card-box" />
+          <img src={mejoraViviendaFolio} className="card-icon" />
+          <h4 className="card-title">Legalización de Documentos</h4>
+          <p className="card-text">
+            Pon al día tus escrituras, impuestos u otros documentos.
+          </p>
         </div>
-        <div className="p-3 bg-[--s2] rounded-md">
-          <h4 className="font-semibold">Administración de viviendas</h4>
-          <p className="text-sm mt-1">Solicita información en caso de herencias o sucesión.</p>
+
+        {/* Tarjeta 3 */}
+        <div className="card">
+          <img src={mejoraViviendaBox} className="card-box" />
+          <img src={mejoraViviendaMoney} className="card-icon" />
+          <h4 className="card-title">Administración de viviendas</h4>
+          <p className="card-text">
+            Solicita información en caso de herencia o ayuda para sucesión.
+          </p>
         </div>
+
       </div>
 
-      <div className="mt-6 flex justify-between">
-        <button onClick={prev} className="btn-ghost">Volver</button>
-        <button onClick={next} className="btn-primary">Finalizar</button>
+      <div className="controls">
+        <button className="btn-back" onClick={prev}>Volver</button>
+        <button className="btn-next" onClick={next}>Finalizar</button>
       </div>
+
     </div>
   )
 }
-

@@ -1,0 +1,97 @@
+/* Contenedor principal */
+.container-benefits {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Título */
+.title-benefits {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #D89F2D;
+  line-height: 1.3;
+}
+
+/* Grid de tarjetas */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+/* Tarjeta */
+.card {
+  background: #FFE3B2;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  position: relative;
+  text-align: center;
+}
+
+/* Imagen de la caja */
+.card-box {
+  width: 90px;
+}
+
+/* Icono encima */
+.card-icon {
+  width: 70px;
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Título de la tarjeta */
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #503629;
+  margin-top: 80px; /* baja el texto para que no choque con la imagen */
+}
+
+/* Texto */
+.card-text {
+  font-size: 0.9rem;
+  color: #503629;
+  margin-top: 10px;
+}
+
+/* Controles */
+.controls {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-back,
+.btn-next {
+  padding: 10px 25px;
+  border: none;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-back {
+  background: #e0e0e0;
+  color: #503629;
+}
+
+.btn-back:hover {
+  background: #d0d0d0;
+}
+
+.btn-next {
+  background: #D89F2D;
+  color: white;
+}
+
+.btn-next:hover {
+  background: #c58e27;
+}
