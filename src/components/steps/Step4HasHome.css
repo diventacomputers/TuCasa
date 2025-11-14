@@ -1,97 +1,99 @@
-:root {
-  --background-color: #f8f0e5; /* Fondo crema */
-  --text-color: #503629;       /* Marrón oscuro */
-  --accent-color: #e5a44a;     /* Mostaza cálido */
-  --button-bg: #f0c377;        /* Botón beige-mostaza */
-  --button-hover: #f5d197;     /* Hover claro */
-}
-
-/* Fondo general */
-.step4-container {
-  background-color: var(--background-color);
-  min-height: 100vh;
+/* Contenedor general */
+.step4-wrapper {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 3rem 2rem;
-  text-align: center;
-  color: var(--text-color);
-  font-family: 'Segoe UI', Arial, sans-serif;
+  gap: 40px;
+  padding: 30px;
+  background: #F2D9B8;
+  min-height: 100vh;
 }
 
-/* Pregunta principal */
+/* Imagen */
+.step4-illustration img {
+  width: 260px;
+  height: auto;
+}
+
+/* Tarjeta blanca */
+.step4-card {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  width: 70%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Título de preguntas */
 .step4-question {
-  font-size: 1.6rem;
+  font-size: 22px;
   font-weight: 700;
-  color: var(--text-color);
-  margin-bottom: 2rem;
+  color: #503629;
+  margin-bottom: 15px;
 }
 
-/* Contenedor de opciones */
+/* Opciones */
 .step4-options {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
-  width: 100%;
-  max-width: 600px;
+  gap: 12px;
 }
 
-@media (min-width: 640px) {
-  .step4-options {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.step4-options.grid-2 {
+  grid-template-columns: 1fr 1fr;
 }
 
-/* Botones de opciones */
 .step4-option {
-  background-color: #fff;
-  border: 2px solid #e3c9a8;
-  border-radius: 12px;
-  padding: 1.2rem;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--text-color);
+  padding: 15px;
+  border: 1px solid #d8d8d8;
+  border-radius: 8px;
   text-align: left;
+  background: #fff;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: 0.2s ease;
 }
 
 .step4-option:hover {
-  background-color: var(--button-hover);
-  transform: scale(1.02);
-  border-color: var(--accent-color);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
 
-/* Pie de página */
-.step4-footer {
-  margin-top: 3rem;
+/* Navegación */
+.step4-nav {
+  margin-top: 30px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 600px;
 }
 
-/* Botón "Volver" */
-.btn-back {
-  background: none;
-  border: none;
-  color: var(--accent-color);
-  font-size: 1.1rem;
-  font-weight: 600;
+.btn-back,
+.btn-next {
+  background: #E9AE53;
+  color: #503629;
+  font-weight: bold;
+  padding: 10px 25px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: color 0.3s ease;
+  transition: 0.2s ease;
 }
 
-.btn-back:hover {
-  color: var(--text-color);
+.btn-next {
+  background: #F2C572;
 }
 
-/* Texto guía */
-.step4-hint {
-  font-size: 0.95rem;
-  color: var(--text-color);
-  opacity: 0.7;
+.btn-back:hover,
+.btn-next:hover {
+  opacity: 0.85;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .step4-wrapper {
+    flex-direction: column;
+  }
+
+  .step4-card {
+    width: 95%;
+  }
+
+  .step4-options.grid-2 {
+    grid-template-columns: 1fr;
+  }
 }
