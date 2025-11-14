@@ -1,167 +1,99 @@
-:root {
-  --bg: #f7e4c7;
-  --text: #503629;
-  --bubble: #ffffff;
-  --button-bg: #e3aa52;
-  --button-hover: #d39a46;
-}
-
-/* ======== CONTENEDOR GENERAL ======== */
-.step2-container {
+/* Contenedor general */
+.step4-wrapper {
   display: flex;
-  justify-content: center;
   align-items: center;
+  gap: 40px;
+  padding: 30px;
+  background: #F2D9B8;
   min-height: 100vh;
-  background: var(--bg);
-  padding: 2rem;
-  position: relative;
-  overflow: hidden;
-  color: var(--text);
 }
 
-/* ======== ILUSTRACIÓN ======== */
-.step2-illustration {
-  position: absolute;
-  left: 2%;
-  bottom: 0;
+/* Imagen */
+.step4-illustration img {
   width: 260px;
-  z-index: 1;
+  height: auto;
 }
 
-/* ======== BURBUJA ======== */
-.dialog-box {
-  background: var(--bubble);
-  border-radius: 28px;
-  padding: 3rem 3.5rem;
-  max-width: 780px;
-  width: 100%;
-  margin-left: 18%;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.11);
-  position: relative;
+/* Tarjeta blanca */
+.step4-card {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  width: 70%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-/* Flecha burbuja */
-.dialog-box::before {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-top: 22px solid transparent;
-  border-bottom: 22px solid transparent;
-  border-right: 30px solid var(--bubble);
-  left: -30px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-/* ======== TIPOGRAFÍA ======== */
-.dialog-small {
-  font-size: 1.4rem;
+/* Título de preguntas */
+.step4-question {
+  font-size: 22px;
   font-weight: 700;
-  margin: 0;
-  color: var(--text);
+  color: #503629;
+  margin-bottom: 15px;
 }
 
-.dialog-title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 0.4rem 0 1.2rem;
-  line-height: 1.2;
-  color: var(--text);
-}
-
-/* ======== OPCIONES ======== */
-.dialog-options {
+/* Opciones */
+.step4-options {
   display: grid;
-  gap: 0.6rem;
-  margin-bottom: 1.8rem;
+  grid-template-columns: 1fr;
+  gap: 12px;
 }
 
-.dialog-button {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  color: var(--text);
+.step4-options.grid-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.step4-option {
+  padding: 15px;
+  border: 1px solid #d8d8d8;
+  border-radius: 8px;
   text-align: left;
-  padding: 0.3rem 0;
+  background: #fff;
   cursor: pointer;
   transition: 0.2s ease;
 }
 
-.dialog-button:hover {
-  opacity: 0.7;
-  transform: translateX(4px);
+.step4-option:hover {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
 
-/* ======== LÍNEA DIVISORA ======== */
-.dialog-divider {
-  border: none;
-  border-top: 2px solid #e6d0b4;
-  margin: 1.6rem 0;
-}
-
-/* ======== FOOTER ======== */
-.dialog-footer {
-  margin-top: 1.5rem;
+/* Navegación */
+.step4-nav {
+  margin-top: 30px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
-.dialog-input {
-  background: var(--button-bg);
-  border: none;
-  color: white;
-  padding: 0.9rem 2.2rem;
-  border-radius: 10px;
-  font-size: 1.1rem;
+.btn-back,
+.btn-next {
+  background: #E9AE53;
+  color: #503629;
+  font-weight: bold;
+  padding: 10px 25px;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: 600;
+  transition: 0.2s ease;
 }
 
-.dialog-input:hover {
-  background: var(--button-hover);
+.btn-next {
+  background: #F2C572;
 }
 
-.progress {
-  font-size: 0.9rem;
-  opacity: 0.7;
-  color: var(--text);
+.btn-back:hover,
+.btn-next:hover {
+  opacity: 0.85;
 }
 
-/* ======== RESPONSIVO ======== */
+/* Responsivo */
 @media (max-width: 900px) {
-  .step2-container {
-    text-align: center;
-    padding: 2rem 1.5rem;
+  .step4-wrapper {
+    flex-direction: column;
   }
 
-  .step2-illustration {
-    position: static;
-    width: 170px;
-    margin-bottom: 1rem;
+  .step4-card {
+    width: 95%;
   }
 
-  .dialog-box {
-    margin-left: 0;
-    padding: 2rem;
-  }
-}
-@media (max-width: 500px) {
-  .dialog-box {
-    padding: 1.5rem;
-  }
-
-  .dialog-title {
-    font-size: 1.6rem;
-  }
-
-  .dialog-button {
-    font-size: 1rem;
-  }
-
-  .dialog-input {
-    padding: 0.7rem 1.5rem;
-    font-size: 1rem;
+  .step4-options.grid-2 {
+    grid-template-columns: 1fr;
   }
 }
