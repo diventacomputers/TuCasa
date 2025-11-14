@@ -17,10 +17,10 @@ export default function Step6Subsidy({ data, update, next, prev }) {
         title: "Información importante",
         message: (
           <>
-            Al tocar <strong>"Siguiente"</strong> accederás a la página de
-            <strong> Compensar</strong> para afiliar a tus beneficiarios.
-            Se abrirá una <strong>nueva pestaña</strong>, entonces
-            <strong> no perderás tu avance.</strong>
+            Al tocar <strong>“Siguiente”</strong> accederás a la página
+            de <strong>Compensar</strong> para afiliar a tus beneficiarios.
+            <br /><br />
+            Se abrirá una <strong>nueva pestaña</strong>, entonces<strong><i> no perderás tu avance en la compra de tu vivienda.</i></strong>
           </>
         ),
         confirmText: "Cerrar",
