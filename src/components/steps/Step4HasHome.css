@@ -41,6 +41,12 @@
 .step4-options.grid-2 {
   grid-template-columns: 1fr 1fr;
 }
+.step4-option.selected {
+  background-color: #e5a44a;
+  color: #503629;
+  font-weight: 700;
+  transform: scale(1.03);
+}
 
 .step4-option {
   padding: 15px;

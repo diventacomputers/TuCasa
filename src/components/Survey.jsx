@@ -46,19 +46,20 @@ export default function Survey(){
   const update = (patch) => setData(d => ({...d,...patch}))
 
   // lógica de flujo: después de P4 (hasHome)
-  const handleAfterHasHome = (val) => {
-    update({ hasHome: val })
-    if(val === 'si'){
-      // ir a beneficios y luego final
-      goTo('benefits_or_next')
-    } else {
-      // si no o parcialmente: ir a subsidy (pantalla 6)
-      goTo('subsidy')
-    }
-  }
+  const handleAfterHasHome = ({ hasHome, homeGoal }) => {
 
-  // navegación desde "benefits_or_next": mostramos Step5 y luego vamos a final
-  // implementado en Step5 con next()
+  update({
+    hasHome,
+    homeGoal
+  });
+
+  if (hasHome === 'si') {
+    goTo('benefits_or_next');
+  } else {
+    goTo('subsidy');
+  }
+};
+
 
   const percent = Math.round((index)/(stepsOrder.length-1)*100)
 
@@ -81,7 +82,13 @@ export default function Survey(){
         {index === 1 && <Step1Welcome next={next} />}
         {index === 2 && <Step2Document data={data} update={update} next={() => goTo('hello')} />}
         {index === 3 && <Step3Hello data={data} next={() => goTo('hasHome')} />}
-        {index === 4 && <Step4HasHome onChoose={handleAfterHasHome} prev={() => goTo('doc')} />}
+       {index === 4 && (
+  <Step4HasHome 
+    onChoose={handleAfterHasHome}
+    prev={() => goTo('doc')}
+  />
+)}
+
         {index === 5 && data.hasHome === 'si' && <Step5Benefits next={() => goTo('final')} prev={() => goTo('hasHome')} />}
         {index === 6 && <Step6Subsidy data={data} update={update} next={() => goTo('types')} openModal={(content)=>setModal({open:true,content})} prev={() => goTo('hasHome')} />}
         {index === 7 && <Step7Types data={data} update={update} next={() => goTo('budget')} prev={() => goTo('subsidy')} />}

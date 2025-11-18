@@ -129,7 +129,7 @@ export default function Step6Subsidy({ data, update, next, prev }) {
           {/* Pregunta 2 */}
           <div className="question-block">
             <div className="question-text">
-              2. ¿Tienes ingresos familiares mensuales inferiores a 4 SMLMV?
+              2. ¿Tienes ingresos familiares mensuales inferiores a 4 salarios mínimos legales vigentes (SMLMV)?
             </div>
             <div className="options">
               <button
@@ -150,7 +150,7 @@ export default function Step6Subsidy({ data, update, next, prev }) {
 
           {/* Pregunta 3 */}
           <div className="question-block">
-            <div className="question-text">3. ¿El hogar está conformado por núcleo familiar?</div>
+            <div className="question-text">3. ¿El hogar está conformado por una o más personas que integren un núcleo familiar?</div>
             <div className="options">
               <button
                 className={`option-btn ${data.householdNucleus === 'si' ? 'selected' : ''}`}
@@ -170,7 +170,7 @@ export default function Step6Subsidy({ data, update, next, prev }) {
 
           {/* Pregunta 4 */}
           <div className="question-block">
-            <div className="question-text">4. ¿Todos los integrantes del hogar están afiliados como beneficiarios?</div>
+            <div className="question-text">4. ¿Todos los integrantes del hogar están afiliados como beneficiarios en la caja de compensación?</div>
             <div className="options">
               <button
                 className={`option-btn ${data.allAffiliated === 'si' ? 'selected' : ''}`}
@@ -190,7 +190,7 @@ export default function Step6Subsidy({ data, update, next, prev }) {
 
           {/* Pregunta 5 */}
           <div className="question-block">
-            <div className="question-text">5. ¿Algún integrante del hogar es propietario de una vivienda?</div>
+            <div className="question-text">5. ¿Algún integrante del hogar es propietario de una vivienda en el territorio nacional?</div>
             <div className="options">
               <button
                 className={`option-btn ${data.houseOwner === 'si' ? 'selected' : ''}`}
@@ -210,7 +210,7 @@ export default function Step6Subsidy({ data, update, next, prev }) {
 
           {/* Pregunta 6 */}
           <div className="question-block">
-            <div className="question-text">6. ¿Has sido beneficiario de un subsidio antes?</div>
+            <div className="question-text">6. ¿Has sido beneficiario de un subsidio familiar de vivienda que haya sido efectivamente aplicado?</div>
             <div className="options">
               <button
                 className={`option-btn ${data.hadSubsidyBefore === 'si' ? 'selected' : ''}`}
