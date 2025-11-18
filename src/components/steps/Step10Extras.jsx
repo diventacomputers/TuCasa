@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Step10Extras.css";
 
 export default function Step10Extras({ data, update, next, prev }) {
+  
+  const [modal, setModal] = useState(false);
 
-  const chooseExtras = () => {
+  const openModal = () => {
+    setModal(true);
+  };
+
+  const closeModal = () => {
+    setModal(false);
     update({ extrasChoice: true });
     next();
   };
@@ -23,9 +30,9 @@ export default function Step10Extras({ data, update, next, prev }) {
       {/* DERECHA – CONTENIDO */}
       <div className="right-column-10">
 
-        {/* BURBUJA AHORA ARRIBA DEL TÍTULO */}
+        {/* BURBUJA */}
         <div className="speech-bubble-10">
-          <div className="speech-bubble-thought"></div> {/* primer punto grande */}
+          <div className="speech-bubble-thought"></div>
           ¡Estás a un paso de adquirir tu vivienda!
         </div>
 
@@ -44,16 +51,38 @@ export default function Step10Extras({ data, update, next, prev }) {
           src="/src/assets/Botones Click/Click 4.png"
           alt="Opciones para pagos adicionales"
           className="opciones-image"
-          onClick={chooseExtras}
+          onClick={openModal}
         />
 
-        {/* BOTONES INFERIORES */}
         <div className="bottom-buttons-10">
           <button className="btn-volver10" onClick={prev}>Volver</button>
           <button className="btn-siguiente10" onClick={next}>Siguiente</button>
         </div>
-
       </div>
+
+
+      {/* ===================== MODAL NUEVO ===================== */}
+      {modal && (
+        <div className="modal-overlay-10">
+          <div className="modal-box-10">
+
+            <h2 className="modal-title-10">
+              Opciones para pagos adicionales:
+            </h2>
+
+            <div className="modal-logos-10">
+              <img src="/src/assets/Logos/Logo 5.png" alt="Davivienda" />
+              <img src="/src/assets/Logos/Logo 2.png" alt="Cafam" />
+              <img src="/src/assets/Logos/Logo 3.png" alt="Unimos" />
+              <img src="/src/assets/Logos/Logo 4.png" alt="Compensar" />
+            </div>
+
+            <button className="modal-btn-10" onClick={() => setModal(false)}>
+              Volver
+            </button>
+          </div>
+        </div>
+      )}
 
     </div>
   );

@@ -9,12 +9,17 @@
 
 @keyframes fadePop {
   0% { opacity: 0; transform: scale(0.85); }
-  100% { opacity: 1; }
+  100% { opacity: 1; transform: scale(1); }
 }
 
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@keyframes modalOpen {
+  0% { opacity: 0; transform: scale(0.75); filter: blur(2px); }
+  100% { opacity: 1; transform: scale(1); filter: blur(0); }
 }
 
 
@@ -68,7 +73,7 @@
 
 
 /* =============================
-      CAJAS - VERSIÓN MEJORADA
+      CAJAS – EFECTO MEJORADO
 ============================= */
 
 .box-card {
@@ -76,27 +81,25 @@
   width: 100%;
   height: 190px;
   cursor: pointer;
-  overflow: hidden;
-  
-  /* Estilo base */
+  overflow: visible;
+
   border-radius: 22px;
   transition: all 0.35s ease;
   animation: fadeSlideUp 0.7s ease forwards;
 }
 
-/* Glow, levitación y resplandor */
+/* Levantamiento visual */
 .box-card:hover {
   transform: translateY(-6px) scale(1.015);
-  
 }
 
-/* Imagen ampliable */
+/* Imagen */
 .box-image {
   position: absolute;
-  margin-left: 35px;
+  margin-left: 5px;
   top: 0;
   left: 0;
-  width: 78%;
+  width: 100%;
   height: 100%;
   object-fit: fill;
   transition: transform 0.45s ease;
@@ -105,10 +108,10 @@
 }
 
 .box-card:hover .box-image {
-  transform: scale(1.07); /* Zoom elegante */
+  transform: scale(1.07);
 }
 
-/* Efecto iluminación overlay */
+/* Luz encima */
 .box-card::after {
   content: "";
   position: absolute;
@@ -123,7 +126,7 @@
 
 
 /* =============================
-      TEXTO DENTRO DE LA CAJA
+      TEXTO DENTRO DE LAS CAJAS
 ============================= */
 
 .box-text {
@@ -145,7 +148,7 @@
 
 
 /* =============================
-      BOTONES
+      BOTONES INFERIORES
 ============================= */
 
 .bottom-buttons {
@@ -210,4 +213,94 @@
 .person-illustration {
   width: 50%;
   animation: fadeIn 1.2s ease forwards;
+}
+
+
+
+/* =====================================================
+      ⚠️ MODAL - ALERTA COMPLETA
+===================================================== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.modal-box {
+  position: relative;
+  width: 60%;
+  max-width: 720px;
+  background: #ffdfab;
+  border-radius: 32px;
+  padding: 60px 45px 45px 45px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  animation: modalOpen 0.45s ease forwards;
+}
+
+
+/* Icono cerdito */
+.modal-cerdito {
+  position: absolute;
+  left: -110px;
+  top: 40px;
+  width: 200px;
+  user-select: none;
+}
+
+/* Título */
+.modal-title {
+  font-size: 36px;
+  color: #503629;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+/* Texto */
+.modal-text {
+  font-size: 22px;
+  color: #503629;
+  line-height: 30px;
+  margin-bottom: 25px;
+}
+
+/* Logos */
+.modal-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 35px;
+}
+
+.modal-logos img {
+  height: 42px;
+  object-fit: contain;
+}
+
+
+
+/* Botones */
+.modal-btn {
+  padding: 12px 30px;
+  margin: 0 10px;
+  border-radius: 18px;
+  border: none;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  background: #e5a44a;
+  color: #503629;
+  transition: transform 0.2s ease;
+}
+
+.modal-btn:hover {
+  transform: scale(1.05);
 }
