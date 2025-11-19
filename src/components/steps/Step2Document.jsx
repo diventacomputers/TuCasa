@@ -32,10 +32,11 @@ export default function Step2Document({ data, update, next }) {
 
         <input
           className="dialog-input"
-          type="text"
+          type="number"
           value={doc}
           onChange={e => setDoc(e.target.value.replace(/\s/g, ''))}
           placeholder="Número de Documento"
+          required
         />
 
         {error && <div className="error-message">{error}</div>}
