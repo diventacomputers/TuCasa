@@ -17,7 +17,7 @@ export default function Step11Final({ data, prev }) {
           <h2 className="final-title">¿Tienes dudas?</h2>
 
           <p className="final-text">
-            Escríbenos tocando los siguientes íconos:
+            Escríbenos tocando los siguientes íconos :
           </p>
 
           <div className="icons-row-11">
