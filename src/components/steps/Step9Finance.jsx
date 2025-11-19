@@ -4,18 +4,21 @@ import "./Step9Finance.css";
 export default function Step9Finance({ data, next, prev }) {
   const [showFirstModal, setShowFirstModal] = useState(false);
   const [showSecondModal, setShowSecondModal] = useState(false);
+  const [showThirdModal, setShowThirdModal] = useState(false); // 🔥 NUEVA MODAL
 
-  const openFirstModal = () => setShowFirstModal(true);
-  const openSecondModal = () => {
-    setShowFirstModal(false);
-    setShowSecondModal(true);
-  };
+  // Abrir modales según sección
+  const openModal30 = () => setShowFirstModal(true);
+  const openModal70 = () => setShowSecondModal(true);
+  const openModal100 = () => setShowThirdModal(true); // 🔥 AL CLICK DEL 100%
+
+  const closeFirstModal = () => setShowFirstModal(false);
   const closeSecondModal = () => setShowSecondModal(false);
+  const closeThirdModal = () => setShowThirdModal(false); // 🔥 CIERRE
 
   return (
     <div className="step9-page">
 
-      {/* ========== MODAL 1 ========== */}
+      {/* ========== MODAL 1 (30%) ========== */}
       {showFirstModal && (
         <div className="modal-overlay">
           <div className="modal-box big-modal">
@@ -45,22 +48,20 @@ export default function Step9Finance({ data, next, prev }) {
               </div>
             </div>
 
-            <button className="modal-btn" onClick={openSecondModal}>
-              Siguiente
+            <button className="modal-btn" onClick={closeFirstModal}>
+              Cerrar
             </button>
           </div>
         </div>
       )}
 
-      {/* ========== MODAL 2 ========== */}
+      {/* ========== MODAL 2 (70%) ========== */}
       {showSecondModal && (
         <div className="modal-overlay">
           <div className="modal-box big-modal">
             <h2 className="modal-title">Ten en cuenta:</h2>
 
             <div className="modal-grid-2">
-
-              {/* Card 1 */}
               <div className="modal-card card-capacidad">
                 <h4>Capacidad de endeudamiento</h4>
                 <p>
@@ -71,20 +72,17 @@ export default function Step9Finance({ data, next, prev }) {
                 </p>
               </div>
 
-              {/* Card 2 */}
               <div className="modal-card">
                 <h4>Historial crediticio</h4>
                 <p>Buena calificación en centrales de riesgo.</p>
               </div>
 
-              {/* Card 3 */}
               <div className="modal-card card-tasa">
                 <h4>Tipo de tasa de interés</h4>
                 <p><strong>Tasa fija:</strong> misma cuota toda la vida del crédito.</p>
                 <p><strong>UVR:</strong> ajusta según inflación.</p>
               </div>
 
-              {/* Card 4 (Grande) */}
               <div className="modal-card card-documentos">
                 <h4>Documentos requeridos</h4>
 
@@ -105,7 +103,6 @@ export default function Step9Finance({ data, next, prev }) {
                 </div>
               </div>
 
-              {/* Card 5 */}
               <div className="modal-card">
                 <h4>Plazo del crédito</h4>
                 <p>Normalmente entre 15 y 30 años.</p>
@@ -114,7 +111,23 @@ export default function Step9Finance({ data, next, prev }) {
             </div>
 
             <button className="modal-btn" onClick={closeSecondModal}>
-              Volver
+              Cerrar
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* ========== MODAL 3 (100%) ========== */}
+      {showThirdModal && (
+        <div className="modal-overlay">
+          <div className="modal-box big-modal">
+            <h2 className="modal-title">Importante</h2>
+            <p className="message-vis">
+              Si es <strong>VIS</strong>, recuerda hacerlo en salarios mínimos del año de entrega.
+            </p>
+
+            <button className="modal-btn" onClick={closeThirdModal}>
+              Entendido
             </button>
           </div>
         </div>
@@ -123,25 +136,25 @@ export default function Step9Finance({ data, next, prev }) {
       {/* PANTALLA PRINCIPAL */}
       <h1 className="title-hagamos">¡Hagamos cuentas!</h1>
 
-      <div className="block-100">100% del Valor total del inmueble</div>
+      <div className="block-100" onClick={openModal100}>
+        100% del Valor total del inmueble
+      </div>
 
       <div className="line-divider"></div>
 
       <div className="percent-section">
-        <div className="percent-box">
+
+        <div className="percent-box" onClick={openModal30}>
           <p>Cuota inicial</p>
           <div className="percent-value">30%</div>
         </div>
 
-        <div className="percent-box">
+        <div className="percent-box" onClick={openModal70}>
           <p>Crédito hipotecario</p>
           <div className="percent-value">70%</div>
         </div>
-      </div>
 
-      <button className="btn-open-modal" onClick={openFirstModal}>
-        Continuar
-      </button>
+      </div>
 
       <button className="back-btn" onClick={prev}>
         Volver
