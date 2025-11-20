@@ -1,23 +1,83 @@
+/* ============================
+   FUENTE OFICIAL BRANDON GROTESQUE
+   ============================ */
+@font-face {
+  font-family: "Brandon";
+  src: url("./assets/fonts/Brandon_med.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Brandon";
+  src: url("./assets/fonts/Brandon_med_it.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Brandon";
+  src: url("./assets/fonts/Brandon_bld.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Brandon";
+  src: url("./assets/fonts/Brandon_bld_it.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* ============================
+   TAILWIND
+   ============================ */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root{
+/* ============================
+   VARIABLES GLOBALES
+   ============================ */
+:root {
+  /* Paleta Diventa */
   --p1: #EAAF4E;
   --p2: #FFD394;
   --p3: #CF9644;
+
+  /* Dark Brown */
   --db: #503629;
+
+  /* Soft backgrounds */
   --s1: #F9DDB7;
   --s2: #FDF0DF;
+
+  /* Colores del sistema (compatibles con tus Steps) */
+  --background-color: #fdf3e3;
+  --text-color: #503629;
+  --bubble-color: #ffffff;
+  --accent-color: #e8b77d;
+  --accent-hover: #d9a86c;
+
+  /* Fuente oficial */
+  --font-body: "Brandon", sans-serif;
 }
 
+/* ============================
+   ESTILOS BASE
+   ============================ */
 body {
-  @apply bg-white text-[--db] font-body;
+  font-family: var(--font-body);
+  background: var(--background-color);
+  color: var(--text-color);
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Card visual */
+/* ============================
+   CARD VISUAL
+   ============================ */
 .card {
   background: linear-gradient(180deg, rgba(249,221,183,0.45), white);
   border-radius: 1rem;
@@ -25,7 +85,9 @@ body {
   box-shadow: 0 8px 28px rgba(80,54,41,0.08);
 }
 
-/* Buttons */
+/* ============================
+   BUTTONS
+   ============================ */
 .btn-primary {
   background: linear-gradient(180deg, var(--p1), var(--p3));
   color: white;
@@ -34,7 +96,10 @@ body {
   box-shadow: 0 6px 14px rgba(80,54,41,0.12);
   transition: transform .12s ease, box-shadow .12s ease;
 }
-.btn-primary:active{ transform: translateY(1px) scale(.998); }
+.btn-primary:active {
+  transform: translateY(1px) scale(.998);
+}
+
 .btn-ghost {
   border: 2px solid var(--db);
   background: transparent;
@@ -43,16 +108,36 @@ body {
   border-radius: .6rem;
 }
 
-/* Inputs */
+/* ============================
+   INPUTS
+   ============================ */
 .input {
   @apply border rounded-md px-3 py-2 w-full;
   border-color: rgba(80,54,41,0.12);
 }
 
-/* Progress */
-.progress { height: .5rem; background: rgba(0,0,0,0.06); border-radius: 999px; overflow: hidden; }
-.progress > .bar { height: 100%; background: linear-gradient(90deg,var(--p1),var(--p3)); transition: width .36s ease; }
+/* ============================
+   PROGRESS BAR
+   ============================ */
+.progress {
+  height: .5rem;
+  background: rgba(0,0,0,0.06);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.progress > .bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--p1), var(--p3));
+  transition: width .36s ease;
+}
 
-/* Modal */
+/* ============================
+   MODAL
+   ============================ */
 .modal-backdrop { background: rgba(0,0,0,0.5); }
-.modal { background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 12px 36px rgba(80,54,41,0.16); }
+.modal {
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 12px 36px rgba(80,54,41,0.16);
+}
