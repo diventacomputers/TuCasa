@@ -25,6 +25,7 @@ export default function Survey(){
     name: 'SANTIAGO', // por ahora simulado; luego lo obtendrás desde backend
     hasHome: null, // 'si' | 'no' | 'parcialmente'
     // respuestas de pantallas adicionales
+    modalMessage: "",   // aquí guardaremos lo escrito por el usuario
     incomesUnder4SM: null,
     householdNucleus: null,
     allBeneficiariesAffiliated: null,
@@ -120,7 +121,7 @@ const handleAfterHasHome = ({ hasHome, homeGoal }) => {
             data={data}
             update={update}
             next={() => goTo("final")}
-            prev={() => goTo("subsidy")} 
+            prev={() => goTo("hasHome")} 
           />
         )}
         {index === 8 && (

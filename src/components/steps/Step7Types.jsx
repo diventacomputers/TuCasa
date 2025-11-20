@@ -53,7 +53,7 @@ export default function Step7Types({ data, update, next, prev }) {
           {/* ... otros elementos ... */}
           <img
             src="/src/assets/Cajas/Caja 2.png"
-            alt="VIS"
+            alt="Semilla de Vivienda"
             className="step7-icon"
           />
           <h4>Semilla de Vivienda</h4>
@@ -71,7 +71,7 @@ Ideal si estas en búsqueda de un proyecto o si ya elegiste un proyecto.
           {/* ... otros elementos ... */}
           <img
             src="/src/assets/Cajas/Caja 3_1.png"
-            alt="Usada"
+            alt="Raíces del hogar"
             className="step7-icon"
           />
           <h4>Raíces del hogar</h4>
@@ -89,7 +89,7 @@ Si llevas adelantado el proceso de pago de cuita inicial, estas próximo a pago 
           {/* ... otros elementos ... */}
           <img
             src="/src/assets/Cajas/Caja 4.png"
-            alt="No VIS"
+            alt="Cosechando frutos"
             className="step7-icon"
           />
           <h4>Cosechando frutos</h4>
@@ -123,7 +123,7 @@ Si llevas adelantado el proceso de pago de cuita inicial, estas próximo a pago 
             {/* Imagen de la casa, añadida como un div o directamente como un <img> si tienes la ruta */}
             <div className="modal-house-icon">
               {/* Usamos un div placeholder, en producción usarías el componente real o un <img> */}
-              <img src="/src/assets/Iconos/Icono 1.png" alt="Vivienda No VIS" />
+              <img src="/src/assets/Iconos/Icono 1.png" alt="Icono 1" />
             </div>
 
             <h3 className="alert-title">{alertData.title}</h3>
