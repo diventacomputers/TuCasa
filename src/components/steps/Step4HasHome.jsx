@@ -5,15 +5,16 @@ export default function Step4HasHome({ onChoose, prev }) {
 
   const [hasHome, setHasHome] = useState(null);
   const [homeGoal, setHomeGoal] = useState(null);
+  const [otherGoal, setOtherGoal] = useState(''); // campo para "Otro"
 
-  const canContinue = hasHome !== null && homeGoal !== null;
+  const canContinue = hasHome !== null && homeGoal !== null && (homeGoal !== 'otro' || otherGoal.trim() !== '');
 
   const handleNext = () => {
     if (!canContinue) return;
 
     onChoose({
       hasHome,
-      homeGoal
+      homeGoal: homeGoal === 'otro' ? otherGoal : homeGoal
     });
   };
 
@@ -52,7 +53,7 @@ export default function Step4HasHome({ onChoose, prev }) {
             onClick={() => setHasHome('parcialmente')} 
             className={`step4-option ${hasHome === 'parcialmente' ? 'selected' : ''}`}
           >
-            c) Parcialmente (compartida, en proceso de compra, etc…)
+            c) En proceso de compra.
           </button>
         </div>
 
@@ -89,7 +90,26 @@ export default function Step4HasHome({ onChoose, prev }) {
           >
             d) Acceder a subsidios / beneficios
           </button>
+
+          {/* NUEVA OPCIÓN OTRO */}
+          <button 
+            onClick={() => setHomeGoal('otro')}
+            className={`step4-option ${homeGoal === 'otro' ? 'selected' : ''}`}
+          >
+            e) Otro
+          </button>
         </div>
+
+        {/* Campo de texto cuando elige OTRO */}
+        {homeGoal === 'otro' && (
+          <input
+            type="text"
+            className="step4-input"
+            placeholder="Escribe tu opción..."
+            value={otherGoal}
+            onChange={(e) => setOtherGoal(e.target.value)}
+          />
+        )}
 
         {/* Navegación */}
         <div className="step4-nav">
