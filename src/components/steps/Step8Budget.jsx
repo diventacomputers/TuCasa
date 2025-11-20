@@ -34,8 +34,8 @@ export default function Step8Budget({ data, update, next, nextbudget2, prev }){
             {/* Burbuja de diálogo replicada */}
             <div className="speech-bubble-wrapper">
                 <div className="speech-bubble">
-                    Ahora que ya sabes el tipo de vivienda que más se adapta a ti, veamos cuál es tu **presupuesto**. 
-                    Esto dependerá de tus **ingresos** y de los **préstamos o créditos** que puedas solicitar
+                    Ahora que ya sabes el tipo de vivienda que más se adapta a ti, veamos cuál es tu <strong>presupuesto.
+                    Esto dependerá de tus ingresos y de los préstamos o créditos que puedas solicitar. </strong>
                 </div>
             </div>
 

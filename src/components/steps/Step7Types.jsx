@@ -104,12 +104,17 @@ Si llevas adelantado el proceso de pago de cuita inicial, estas próximo a pago 
 
       </div>
 
-      {/* Botón volver */}
+       {/* Botón volver y botón siguiente */}
       <div className="mt-6 flex justify-between">
         <button onClick={prev} className="btn-ghost7">
           Volver
         </button>
+
+        <button className="btn-ghost7" onClick={next}>
+          Siguiente
+        </button>
       </div>
+
 
       {/* 2. Estructura de la Modal / Alert */}
       {alertData && ( 
