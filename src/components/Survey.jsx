@@ -65,17 +65,7 @@ export default function Survey(){
 
   return (
     <div>
-      <div className="mb-4">
-        <div className="flex justify-between items-center gap-4">
-          <div className="text-sm font-medium" style={{color:'#503629'}}>
-            {['Bienvenida','Documento','Hola','Vivienda','Beneficios / Siguiente','Subsidio','Tipos','Presupuesto','Finanzas','Extras','Final'][index]}
-          </div>
-          <div className="text-xs opacity-60">{index+1}/{stepsOrder.length}</div>
-        </div>
-        <div className="mt-2 progress">
-          <div className="bar" style={{width: `${percent}%`}} />
-        </div>
-      </div>
+      
 
       <div className="min-h-[320px]">
         {index === 0 && <Step0Initial next={next} />}
@@ -103,12 +93,7 @@ export default function Survey(){
         }} />}
       </div>
 
-      {/* controles generales: si estamos en Step5 pero hasHome no es si, evita mostrar */}
-      <div className="mt-6 flex justify-between items-center">
-        <button onClick={prev} className={`btn-ghost ${index===0 ? 'opacity-50 pointer-events-none' : ''}`}>Volver</button>
-        <div className="text-sm opacity-70">Progreso {percent}%</div>
-        <div className="w-28" />
-      </div>
+      
 
       {/* modal */}
       {modal.open && (
