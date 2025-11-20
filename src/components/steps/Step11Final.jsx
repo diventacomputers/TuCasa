@@ -40,10 +40,16 @@ export default function Step11Final({ data, prev }) {
 
         </div>
 
-        {/* BOTÓN FINALIZAR */}
-        <button className="btn-finalizar-11" onClick={finalizar}>
-          Finalizar
-        </button>
+        {/* BOTÓNES: VOLVER + FINALIZAR */}
+        <div className="buttons-row-11">
+          <button className="btn-volver-11" onClick={prev}>
+            Volver
+          </button>
+
+          <button className="btn-finalizar-11" onClick={finalizar}>
+            Finalizar
+          </button>
+        </div>
       </div>
 
       {/* Derecha – PERSONAJE */}
