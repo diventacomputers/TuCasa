@@ -12,7 +12,7 @@ export default function Step4HasHome({ onChoose, prev, userDocument }) {
     homeGoal !== null &&
     (homeGoal !== 'otro' || otherGoal.trim() !== '');
 
-  const handleNext = async () => {
+  const handleNext = () => {
     if (!canContinue) return;
 
     const respuestas = {
@@ -20,39 +20,10 @@ export default function Step4HasHome({ onChoose, prev, userDocument }) {
       homeGoal: homeGoal === 'otro' ? otherGoal : homeGoal
     };
 
-    // Enviar al padre si lo necesitas
+    // 👉 SOLO enviamos las respuestas al flujo global
     if (onChoose) onChoose(respuestas);
 
-    // Payload para STRAPI
-    const payload = {
-      data: {
-        documento: Number(userDocument),        // ⚠️ DOCUMENTO DEL USUARIO
-        res_v: respuestas                       // JSON completo
-      }
-    };
-
-    try {
-      const res = await fetch(
-        "https://macfer.crepesywaffles.com/api/cvivienas111-del-futuros",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            // "Authorization": "Bearer TU_TOKEN" // si el content-type no es público
-          },
-          body: JSON.stringify(payload)
-        }
-      );
-
-      const data = await res.json();
-      console.log("Guardado en Strapi:", data);
-
-      // Aquí podrías avanzar al siguiente paso si es necesario
-      // next();
-
-    } catch (error) {
-      console.error("Error enviando datos a Strapi:", error);
-    }
+    // 👉 NO se envía nada a Strapi aquí
   };
 
   return (
