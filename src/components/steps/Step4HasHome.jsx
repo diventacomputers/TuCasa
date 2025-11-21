@@ -75,43 +75,44 @@ export default function Step4HasHome({ onChoose, prev, userDocument }) {
           </button>
 
           <button
-            onClick={() => setHomeGoal('mejorar')}
-            className={`step4-option ${homeGoal === 'mejorar' ? 'selected' : ''}`}
+            onClick={() => setHomeGoal('b) Mejorar mi vivienda actual')}
+            className={`step4-option ${homeGoal === 'b) Mejorar mi vivienda actual' ? 'selected' : ''}`}
           >
             b) Mejorar mi vivienda actual
           </button>
 
           <button
-            onClick={() => setHomeGoal('b) Mejorar mi vivienda actual')}
-            className={`step4-option ${homeGoal === 'b) Mejorar mi vivienda actual' ? 'selected' : ''}`}
-          >
-            c) Cambiarme a una zona diferente
-          </button>
-
-          <button
-            onClick={() => setHomeGoal('c) Cambiarme a una zona diferente')}
+            onClick={() => setHomeGoal('c) Cambiarme a una zona diferentel')}
             className={`step4-option ${homeGoal === 'c) Cambiarme a una zona diferente' ? 'selected' : ''}`}
           >
-            d) Acceder a subsidios / beneficios
+            c) Cambiarme a una zona diferente
           </button>
 
           <button
             onClick={() => setHomeGoal('d) Acceder a subsidios / beneficios')}
             className={`step4-option ${homeGoal === 'd) Acceder a subsidios / beneficios' ? 'selected' : ''}`}
           >
+            d) Acceder a subsidios / beneficios
+          </button>
+
+          <button
+            onClick={() => setHomeGoal('e) Otro')}
+            className={`step4-option ${homeGoal === 'e) Otro' ? 'selected' : ''}`}
+          >
             e) Otro
           </button>
         </div>
 
-        {homeGoal === 'otro' && (
-          <input
-            type="text"
-            className="step4-input"
-            placeholder="Escribe tu opción..."
-            value={otherGoal}
-            onChange={(e) => setOtherGoal(e.target.value)}
-          />
-        )}
+       {homeGoal === 'e) Otro' && (
+  <input
+    type="text"
+    className="step4-input"
+    placeholder="Escribe tu opción..."
+    value={otherGoal}
+    onChange={(e) => setOtherGoal(e.target.value)}
+  />
+)}
+
 
         <div className="step4-nav">
           <button onClick={prev} className="btn-back">

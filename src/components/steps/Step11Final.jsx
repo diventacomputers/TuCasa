@@ -5,6 +5,9 @@ export default function Step11Final({ data, prev }) {
 
   const finalizar = () => {
     alert("Gracias por completar el formulario. ¡Pronto nos pondremos en contacto contigo!");
+    
+    // 🔥 Recargar la página y volver al paso inicial (Logos)
+    window.location.href = window.location.origin;
   };
 
   return (
@@ -21,7 +24,6 @@ export default function Step11Final({ data, prev }) {
           </p>
 
           <div className="icons-row-11">
-            {/* WhatsApp */}
             <img
               src="/src/assets/Iconos/Icono 7.png"
               alt="WhatsApp"
@@ -29,7 +31,6 @@ export default function Step11Final({ data, prev }) {
               onClick={() => window.open("https://wa.me/+576016767610", "_blank")}
             />
 
-            {/* Correo */}
             <img
               src="/src/assets/Iconos/Icono 8.png"
               alt="Correo"
@@ -40,7 +41,6 @@ export default function Step11Final({ data, prev }) {
 
         </div>
 
-        {/* BOTÓNES: VOLVER + FINALIZAR */}
         <div className="buttons-row-11">
           <button className="btn-volver-11" onClick={prev}>
             Volver
@@ -52,7 +52,6 @@ export default function Step11Final({ data, prev }) {
         </div>
       </div>
 
-      {/* Derecha – PERSONAJE */}
       <div className="right-column-11">
         <img
           src="/src/assets/Personajes/Personaje 8.png"
