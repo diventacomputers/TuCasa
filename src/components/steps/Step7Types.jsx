@@ -32,13 +32,13 @@ export default function Step7Types({ data, update, next, prev }) {
 
   const payload = {
     data: {
-      documento: Number(data.document),   // o data.documento si lo renombraste
+      documento: Number(data.document),   // o data.documento
       res_v: {
-        // 🔥 DATOS DEL PASO 4
+        //  DATOS DEL PASO 4
         hasHome: data.hasHome,
         homeGoal: data.homeGoal,
 
-        // 🔥 DATOS DEL PASO 7
+        //  DATOS DEL PASO 7
         typeOfHousing: data.typeOfHousing,
         userResponse: userResponse
       }
@@ -135,7 +135,7 @@ export default function Step7Types({ data, update, next, prev }) {
                 onChange={(e) => setUserResponse(e.target.value)}
               />
 
-              {/* 🔥 Aquí se dispara el POST */}
+              {/* POST */}
               <button className="btn-modal-submit" onClick={handleSubmitResponse}>
                 Enviar
               </button>
