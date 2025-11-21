@@ -17,7 +17,7 @@ export default function Step4HasHome({ onChoose, prev, userDocument }) {
 
     const respuestas = {
       hasHome,
-      homeGoal: homeGoal === 'otro' ? otherGoal : homeGoal
+      homeGoal: homeGoal === 'e) Otro' ? otherGoal : homeGoal
     };
 
     // 👉 SOLO enviamos las respuestas al flujo global
