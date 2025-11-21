@@ -8,48 +8,28 @@ export default function Step2Document({ data, update, next }) {
   const [alertData, setAlertData] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // ============================
-  // 1️⃣ Verificar si es empleado
-  // ============================
   const checkEmployee = async (document) => {
     try {
       const url = `https://apialoha.crepesywaffles.com/intellinext2?dui_person=${document}`;
       const res = await fetch(url);
       const json = await res.json();
-
-      console.log("Empleado API:", json);
-
-      // API devuelve un array → si tiene datos = es empleado
       return Array.isArray(json) && json.length > 0;
-
     } catch (err) {
-      console.error("Error consultando empleado:", err);
       return false;
     }
   };
 
-  // ==========================================
-  // 2️⃣ Verificar si ya tiene registro en Strapi
-  // ==========================================
   const checkIfExists = async (document) => {
     try {
       const url = `https://macfer.crepesywaffles.com/api/cvivienas111-del-futuros?filters[documento][$eq]=${document}`;
       const res = await fetch(url);
       const json = await res.json();
-
-      console.log("Registro Strapi:", json);
-
       return json?.data && json.data.length > 0;
-
     } catch (err) {
-      console.error("Error consultando Strapi:", err);
       return false;
     }
   };
 
-  // ============================
-  // HANDLER PRINCIPAL
-  // ============================
   const handle = async () => {
     if (!doc || doc.length < 6) {
       setError('Ingresa un número de documento válido (mínimo 6 dígitos).');
@@ -58,7 +38,6 @@ export default function Step2Document({ data, update, next }) {
 
     setLoading(true);
 
-    // 1️⃣ Verificar si es empleado
     const isEmployee = await checkEmployee(doc);
 
     if (!isEmployee) {
@@ -72,9 +51,7 @@ No es posible continuar con el formulario.`,
       return;
     }
 
-    // 2️⃣ Verificar si ya está registrado en Strapi
     const exists = await checkIfExists(doc);
-
     setLoading(false);
 
     if (exists) {
@@ -87,14 +64,23 @@ No es posible volver a diligenciar el formulario.`,
       return;
     }
 
-    // Si todo está bien → continuar
     update({ document: doc });
     setError('');
     next();
   };
 
+  const goToAdmin = () => {
+    window.location.href = "/admin";
+  };
+
   return (
     <div className="step2-container">
+
+      {/* ⭐ Botón ajustado al lugar exacto que pediste ⭐ */}
+      <button className="admin-access-button" onClick={goToAdmin}>
+        Panel Administrativo
+      </button>
+
       <img
         src={WomanIllustration}
         alt="Asesora de vivienda"
@@ -123,22 +109,18 @@ No es posible volver a diligenciar el formulario.`,
         </button>
       </div>
 
-      {/* ============================
-            MODAL ALERT
-      ============================= */}
       {alertData && (
         <div className="modal-overlay">
           <div className="modal-box">
             <h2 className="modal-title">{alertData.title}</h2>
-
             <p className="modal-message">{alertData.message}</p>
-
             <button className="modal-button" onClick={() => setAlertData(null)}>
               {alertData.button}
             </button>
           </div>
         </div>
       )}
+
     </div>
   );
 }
