@@ -55,8 +55,8 @@ export default function Step4HasHome({ onChoose, prev, userDocument }) {
           </button>
 
           <button
-            onClick={() => setHasHome('parcialmente')}
-            className={`step4-option ${hasHome === 'parcialmente' ? 'selected' : ''}`}
+            onClick={() => setHasHome('c) En proceso de compra.')}
+            className={`step4-option ${hasHome === 'c) En proceso de compra.' ? 'selected' : ''}`}
           >
             c) En proceso de compra.
           </button>
@@ -68,8 +68,8 @@ export default function Step4HasHome({ onChoose, prev, userDocument }) {
 
         <div className="step4-options grid-2">
           <button
-            onClick={() => setHomeGoal('primera')}
-            className={`step4-option ${homeGoal === 'primera' ? 'selected' : ''}`}
+            onClick={() => setHomeGoal('a) Comprar mi primera vivienda')}
+            className={`step4-option ${homeGoal === 'a) Comprar mi primera vivienda' ? 'selected' : ''}`}
           >
             a) Comprar mi primera vivienda
           </button>
@@ -82,22 +82,22 @@ export default function Step4HasHome({ onChoose, prev, userDocument }) {
           </button>
 
           <button
-            onClick={() => setHomeGoal('zona')}
-            className={`step4-option ${homeGoal === 'zona' ? 'selected' : ''}`}
+            onClick={() => setHomeGoal('b) Mejorar mi vivienda actual')}
+            className={`step4-option ${homeGoal === 'b) Mejorar mi vivienda actual' ? 'selected' : ''}`}
           >
             c) Cambiarme a una zona diferente
           </button>
 
           <button
-            onClick={() => setHomeGoal('subsidios')}
-            className={`step4-option ${homeGoal === 'subsidios' ? 'selected' : ''}`}
+            onClick={() => setHomeGoal('c) Cambiarme a una zona diferente')}
+            className={`step4-option ${homeGoal === 'c) Cambiarme a una zona diferente' ? 'selected' : ''}`}
           >
             d) Acceder a subsidios / beneficios
           </button>
 
           <button
-            onClick={() => setHomeGoal('otro')}
-            className={`step4-option ${homeGoal === 'otro' ? 'selected' : ''}`}
+            onClick={() => setHomeGoal('d) Acceder a subsidios / beneficios')}
+            className={`step4-option ${homeGoal === 'd) Acceder a subsidios / beneficios' ? 'selected' : ''}`}
           >
             e) Otro
           </button>
