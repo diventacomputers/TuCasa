@@ -10,7 +10,7 @@ export default function Step4HasHome({ onChoose, prev, userDocument }) {
   const canContinue =
     hasHome !== null &&
     homeGoal !== null &&
-    (homeGoal !== 'otro' || otherGoal.trim() !== '');
+    (homeGoal !== 'e) Otro' || otherGoal.trim() !== '');
 
   const handleNext = () => {
     if (!canContinue) return;
@@ -82,7 +82,7 @@ export default function Step4HasHome({ onChoose, prev, userDocument }) {
           </button>
 
           <button
-            onClick={() => setHomeGoal('c) Cambiarme a una zona diferentel')}
+            onClick={() => setHomeGoal('c) Cambiarme a una zona diferente')}
             className={`step4-option ${homeGoal === 'c) Cambiarme a una zona diferente' ? 'selected' : ''}`}
           >
             c) Cambiarme a una zona diferente
