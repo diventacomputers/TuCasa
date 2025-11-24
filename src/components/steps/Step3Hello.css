@@ -153,3 +153,19 @@
     font-size: 1.4rem;
   }
 }
+
+/* Estilos pucture url*/
+.step3-photo-wrapper {
+  width: 130px;
+  height: 130px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.step3-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
