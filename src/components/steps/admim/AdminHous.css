@@ -2,11 +2,16 @@
    PANEL ADMIN
 ============================ */
 
+/* 🔥 FORZAR fuente oficial en todo el panel admin */
+.admin-container,
+.admin-container * {
+  font-family: var(--font-body) !important;
+}
+
 .admin-container {
   padding: 40px;
   max-width: 1200px;
   margin: auto;
-  font-family: 'Poppins', sans-serif;
 }
 
 .admin-title {
@@ -72,7 +77,6 @@
   font-size: 14px;
 }
 
-/* Hover elegante */
 .admin-table tr:hover {
   background: #f7efe6;
 }
@@ -81,19 +85,16 @@
    ANCHOS DE CADA COLUMNA
 ============================ */
 
-/* ID */
 .admin-table th:nth-child(1),
 .admin-table td:nth-child(1) {
   width: 5%;
 }
 
-/* Documento */
 .admin-table th:nth-child(2),
 .admin-table td:nth-child(2) {
   width: 10%;
 }
 
-/* Foto — Más compacta */
 .admin-table th:nth-child(3),
 .admin-table td:nth-child(3) {
   width: 8%;
@@ -109,21 +110,17 @@
   margin: 0 auto;
 }
 
-/* Nombre */
 .admin-table th:nth-child(4),
 .admin-table td:nth-child(4) {
   width: 18%;
   line-height: 1.3;
 }
 
-/* Estado Vivienda — Reducido */
 .admin-table th:nth-child(5),
 .admin-table td:nth-child(5) {
   width: 8%;
- 
 }
 
-/* Meta — Más espacio y mejor lectura */
 .admin-table th:nth-child(6),
 .admin-table td:nth-child(6) {
   width: 22%;
@@ -131,26 +128,23 @@
   white-space: normal;
 }
 
-/* Tipo Vivienda */
 .admin-table th:nth-child(7),
 .admin-table td:nth-child(7) {
   width: 10%;
- 
 }
 
-/* Respuesta Usuario — Más amplia */
 .admin-table th:nth-child(8) {
- width: 25%;
+  width: 25%;
   line-height: 1.4;
   color: #fff;
 }
+
 .admin-table td:nth-child(8) {
   width: 25%;
   line-height: 1.4;
   color: #6b4a37;
 }
 
-/* Fecha Registro */
 .admin-table th:nth-child(9) {
   width: 10%;
   font-size: 14px;
