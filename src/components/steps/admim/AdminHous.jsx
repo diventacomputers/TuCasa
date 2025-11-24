@@ -168,18 +168,23 @@ const exportToExcel = async () => {
 
   // CUERPO DE TABLA
   const excelData = data.map((item) => {
-    const r = item.attributes.res_v || {};
-    return [
-      item.id,
-      item.attributes.documento,
-      item.attributes.nombre,
-      r.hasHome || "—",
-      r.homeGoal || "—",
-      r.typeOfHousing || "—",
-      r.userResponse || "—",
-      new Date(item.attributes.createdAt).toLocaleDateString(),
-    ];
-  });
+  const r = item.attributes.res_v || {};
+  const doc = item.attributes.documento;
+
+  const info = employeeInfo[doc] || {};
+
+  return [
+    item.id,
+    doc,
+    info.nombre || "No encontrado",       // ✅ Nombre desde BUK
+    r.hasHome || "—",
+    r.homeGoal || "—",
+    r.typeOfHousing || "—",
+    r.userResponse || "—",
+    new Date(item.attributes.createdAt).toLocaleDateString(),
+  ];
+});
+
 
   excelData.forEach((row, rowIndex) => {
     const excelRow = sheet.addRow(row);
@@ -283,22 +288,7 @@ const exportToExcel = async () => {
           >
             Entrar
           </button>
-          <button
-            className="btn-enter"
-            onClick={() => {
-              if (password === REAL_PASSWORD) {
-                setShowSuccessModal(true);
-              } else {
-                const box = document.querySelector(".guardian-box");
-                if (box) {
-                  box.classList.add("shake");
-                  setTimeout(() => box.classList.remove("shake"), 600);
-                }
-              }
-            }}
-          >
-            Entrar
-          </button>
+          
 
             <button className="btn-back" onClick={goBack}>
               ⬅ Regresar
