@@ -75,11 +75,10 @@
      BOTÓN
 ============================= */
 
-/* Centrar mejor el botón y hacerlo más pequeño */
 .welcome1-button {
   margin-top: 22px;
-  align-self: flex-start;   /* Se alinea justo debajo del texto */
-  padding: 10px 30px;       /* Menos ancho */
+  align-self: flex-start;
+  padding: 10px 30px;
   background: #e5a44a;
   border-radius: 10px;
   color: #503629;
@@ -95,21 +94,19 @@
 }
 
 
-
 /* =============================
      DERECHA
 ============================= */
 
-/* Acercar el personaje a los mensajes */
 .welcome1-right {
-  width: 40%;               /* Reduce ancho para acercarlo */
+  width: 40%;
   display: flex;
-  justify-content: flex-start;  /* Lo mueve más hacia el centro */
+  justify-content: flex-start;
 }
 
 .welcome1-img {
-  width: 310px;             /* Un poco más pequeño para armonizar */
-  margin-left: -40px;       /* Lo acerca aún más a la burbuja */
+  width: 310px;
+  margin-left: -40px;
   margin-top: 10px;
   user-select: none;
 }
@@ -118,7 +115,7 @@
 /* =============================
      LOGOS SUPERIORES
 ============================= */
-/* === LOGO SUPERIOR DERECHO === */
+
 .welcome-header0 {
   position: absolute;
   top: 20px;
@@ -129,4 +126,67 @@
   height: 70px;
   width: auto;
   object-fit: contain;
+}
+
+
+/* =====================================
+      RESPONSIVO — TABLETS Y CELULARES
+===================================== */
+
+/* Ocultar imagen en pantallas menores a 1024px */
+@media (max-width: 1024px) {
+  .welcome1-right {
+    display: none !important;
+  }
+}
+
+/* Ajustes generales para móviles */
+@media (max-width: 900px) {
+  .welcome1-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 30px;
+    justify-content: center;
+  }
+
+  .welcome1-left {
+    width: 100%;
+    align-items: center;
+  }
+
+  .welcome1-title {
+    font-size: 32px;
+  }
+
+  .welcome1-subtitle {
+    font-size: 42px;
+  }
+
+  .welcome1-bubble {
+    margin: 20px auto;
+  }
+
+  .welcome1-button {
+    align-self: center;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 600px) {
+  .welcome1-title {
+    font-size: 28px;
+  }
+
+  .welcome1-subtitle {
+    font-size: 34px;
+  }
+
+  .welcome1-bubble {
+    font-size: 18px;
+    padding: 18px 20px;
+  }
+
+  .welcome-header0 img {
+    height: 55px;
+  }
 }

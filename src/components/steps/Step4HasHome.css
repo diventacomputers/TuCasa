@@ -109,10 +109,22 @@
   opacity: 0.85;
 }
 
-/* Responsivo */
+
+/* ================================
+      RESPONSIVO — TABLETS/MÓVILES
+================================ */
+
+/* Ocultar ilustración en pantallas pequeñas */
+@media (max-width: 1024px) {
+  .step4-illustration {
+    display: none !important;
+  }
+}
+
 @media (max-width: 900px) {
   .step4-wrapper {
     flex-direction: column;
+    text-align: center;
   }
 
   .step4-card {
@@ -121,5 +133,36 @@
 
   .step4-options.grid-2 {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Ajustes para móviles pequeños */
+@media (max-width: 600px) {
+  .step4-card {
+    padding: 25px;
+  }
+
+  .step4-question {
+    font-size: 20px;
+  }
+
+  .step4-option {
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .step4-input {
+    font-size: 15px;
+  }
+
+  .step4-nav {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .btn-back,
+  .btn-next {
+    width: 100%;
+    text-align: center;
   }
 }
