@@ -13,7 +13,6 @@
   font-family: var(--font-regular);
 }
 
-
 /* =============================
      IZQUIERDA
 ============================= */
@@ -43,7 +42,6 @@
   font-family: var(--font-bold);
 }
 
-
 /* =============================
      BURBUJA MENSAJE
 ============================= */
@@ -70,7 +68,6 @@
   border-bottom: 18px solid transparent;
 }
 
-
 /* =============================
      BOTÓN
 ============================= */
@@ -93,7 +90,6 @@
   transform: scale(1.05);
 }
 
-
 /* =============================
      DERECHA
 ============================= */
@@ -111,7 +107,6 @@
   user-select: none;
 }
 
-
 /* =============================
      LOGOS SUPERIORES
 ============================= */
@@ -128,25 +123,39 @@
   object-fit: contain;
 }
 
+/* ===========================================================
+     📱 RESPONSIVIDAD PARA TABLETS (max-width: 1024px)
+=========================================================== */
 
-/* =====================================
-      RESPONSIVO — TABLETS Y CELULARES
-===================================== */
-
-/* Ocultar imagen en pantallas menores a 1024px */
 @media (max-width: 1024px) {
-  .welcome1-right {
-    display: none !important;
+  .welcome1-container {
+    padding: 50px 40px;
+  }
+
+  .welcome1-left {
+    width: 60%;
+  }
+
+  .welcome1-subtitle {
+    font-size: 44px;
+  }
+
+  .welcome1-img {
+    width: 260px;
+    margin-left: 0px;
   }
 }
 
-/* Ajustes generales para móviles */
-@media (max-width: 900px) {
+/* ===========================================================
+     📱 RESPONSIVIDAD PARA CELULARES (max-width: 768px)
+=========================================================== */
+
+@media (max-width: 768px) {
   .welcome1-container {
-    flex-direction: column;
+    flex-direction: column-reverse;
     text-align: center;
-    padding: 40px 30px;
-    justify-content: center;
+    padding: 40px 20px;
+    gap: 30px;
   }
 
   .welcome1-left {
@@ -159,34 +168,79 @@
   }
 
   .welcome1-subtitle {
-    font-size: 42px;
-  }
-
-  .welcome1-bubble {
-    margin: 20px auto;
-  }
-
-  .welcome1-button {
-    align-self: center;
-  }
-}
-
-/* Móviles pequeños */
-@media (max-width: 600px) {
-  .welcome1-title {
-    font-size: 28px;
-  }
-
-  .welcome1-subtitle {
-    font-size: 34px;
+    font-size: 38px;
   }
 
   .welcome1-bubble {
     font-size: 18px;
-    padding: 18px 20px;
+    max-width: 100%;
+  }
+
+  .welcome1-bubble::after {
+    display: none;
+  }
+
+  .welcome1-right {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .welcome1-img {
+    width: 240px;
+    margin: 0;display: none;
   }
 
   .welcome-header0 img {
     height: 55px;
+    
+  }
+
+  .welcome1-button {
+    align-self: center;
+    font-size: 16px;
+    padding: 10px 26px;
+  }
+}
+
+/* ===========================================================
+     📱 CELULARES PEQUEÑOS (max-width: 480px)
+=========================================================== */
+
+@media (max-width: 480px) {
+
+ 
+  .welcome1-title {
+    font-size: 26px;
+    
+  }
+
+  .welcome1-subtitle {
+    font-size: 30px;
+  }
+
+  .welcome1-bubble {
+    font-size: 16px;
+   
+  }
+
+  .welcome1-img { 
+    display: none;
+    width: 150px;
+   
+    
+  }
+
+  .welcome-header0 {
+    top: 10px;
+    right: 10px;
+  }
+
+  .welcome-header0 img {
+    height: 45px;
+  }
+
+  .welcome1-button {
+    font-size: 15px;
+  
   }
 }
