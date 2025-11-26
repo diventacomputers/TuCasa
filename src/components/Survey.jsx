@@ -47,7 +47,7 @@ export default function Survey(){
   const update = (patch) => setData(d => ({...d,...patch}))
 
   // lógica de flujo: después de P4 (hasHome)
-  /* DESHABILITADO TEMPORALMENTE
+  /* DESHABILITADO TEMPORALMENTE 
 
   {index === 7 && <Step7Types data={data} update={update} next={() => goTo('budget')} prev={() => goTo('subsidy')} />} REEMPLAZAR EN EL PASO 7 DENTRO DEL RETURN
   const handleAfterHasHome = ({ hasHome, homeGoal }) => {
