@@ -27,24 +27,27 @@ export default function Step11Final({ data, prev }) {
           <h2 className="final-title">¿Tienes dudas?</h2>
 
           <p className="final-text">
-            Escríbenos tocando los siguientes íconos :
+            Escríbenos haciendo click en los siguientes íconos :
           </p>
 
-          <div className="icons-row-11">
-            <img
-              src={Icono7}
-              alt="WhatsApp"
-              className="contact-icon"
-              onClick={() => window.open("https://wa.me/+576016767610", "_blank")}
-            />
+     <div className="icons-row-11">
 
-            <img
-              src={Icono8}
-              alt="Correo"
-              className="contact-icon"
-              onClick={() => window.open("https://www.crepesywaffles.com/contacto")}
-            />
-          </div>
+  <img
+    src={Icono7}
+    alt="WhatsApp"
+    className="icon-whatsapp"
+    onClick={() => window.open("https://wa.me/+576016767610", "_blank")}
+  />
+
+  <img
+    src={Icono8}
+    alt="Correo"
+    className="icon-mail"
+    onClick={() => window.open("https://www.crepesywaffles.com/contacto")}
+  />
+
+</div>
+
 
         </div>
 
