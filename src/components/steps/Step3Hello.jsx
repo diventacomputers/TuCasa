@@ -6,6 +6,13 @@ export default function Step3Hello({ data, next }) {
   const [name, setName] = useState("USUARIO");
   const [photo, setPhoto] = useState(null);
 
+  // Función para reducir el nombre (primer nombre + primer apellido)
+  const shortenName = (fullName) => {
+    if (!fullName) return "USUARIO";
+    const parts = fullName.split(" ").filter(p => p.trim() !== "");
+    return parts.slice(0, 2).join(" ").toUpperCase();
+  };
+
   useEffect(() => {
 
     const fetchNameFromAloha = async () => {
@@ -15,7 +22,6 @@ export default function Step3Hello({ data, next }) {
         );
 
         const raw = await response.json();
-
         console.log("📨 API ALOHA:", raw);
 
         if (Array.isArray(raw) && raw.length > 0) {
@@ -24,7 +30,7 @@ export default function Step3Hello({ data, next }) {
             raw[0].NOMBRE ||
             "USUARIO";
 
-          setName(fullName);
+          setName(shortenName(fullName));
         }
       } catch (error) {
         console.error("❌ Error API Aloha:", error);
@@ -45,18 +51,15 @@ export default function Step3Hello({ data, next }) {
         );
 
         const buk = await response.json();
-
         console.log("📸 API BUK:", buk);
 
         if (buk?.data?.length > 0) {
           const empleado = buk.data[0];
 
-          // Nombre más confiable desde BUK
           if (empleado.full_name) {
-            setName(empleado.full_name);
+            setName(shortenName(empleado.full_name));
           }
 
-          // FOTO profesional desde picture_url
           if (empleado.picture_url) {
             setPhoto(empleado.picture_url);
           }
@@ -69,14 +72,11 @@ export default function Step3Hello({ data, next }) {
       }
     };
 
-
     fetchNameFromAloha();
     fetchEmployeeFromBUK();
 
   }, [data.document]);
 
-
-  const nameToDisplay = name.toUpperCase();
 
   return (
     <div className="step3-container">
@@ -94,7 +94,7 @@ export default function Step3Hello({ data, next }) {
           />
         </div>
 
-        <h1 className="step3-title">¡HOLA, {nameToDisplay}!</h1>
+        <h1 className="step3-title">¡HOLA, {name}!</h1>
 
         <p className="step3-message">
           Tu sueño de tener vivienda está más cerca de ser una realidad.

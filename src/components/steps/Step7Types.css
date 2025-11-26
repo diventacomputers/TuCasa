@@ -469,3 +469,56 @@
     border-radius: 14px;
   }
 }
+
+
+/* Fuerza todas las tarjetas a igual altura dentro del grid */
+.step7-grid .step7-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.step7-grid {
+  align-items: stretch; /* magia pura: todas se estiran igual */
+}
+.step7-card p {
+  flex-grow: 1; /* El párrafo ocupa todo el espacio disponible */
+}
+
+/* Fuerza que todas las imágenes de las tarjetas tengan la MISMA altura */
+.step7-card .step7-icon {
+  width: 220px !important;
+  height: 180px !important;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+/* Ahora sí: tarjetas alineadas perfectamente */
+.step7-grid {
+  align-items: stretch !important;
+}
+
+.step7-card {
+  height: 100% !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* distribuye perfecto */
+}
+
+
+/* Mantener botones Volver / Siguiente en su posición original */
+.step7-bottom,
+.mt-6.flex.justify-between {
+  margin-top: 40px !important;
+  width: 100%;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center;
+  padding: 0 10px;
+}
+
+/* Que no los afecte la altura del grid */
+.step7-types > .step7-bottom {
+  position: relative;
+  z-index: 10;
+}

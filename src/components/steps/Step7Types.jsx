@@ -84,7 +84,7 @@ export default function Step7Types({ data, update, next, prev }) {
           <h4>Semilla de Vivienda</h4>
           <p>Para quienes están dando su primer paso.</p>
           <button onClick={() => showNoVisModal("semilla")} className="btn-house">
-            Descubre proyectos inmobiliarios
+              Quiero aplicar 
           </button>
         </div>
 
@@ -93,7 +93,7 @@ export default function Step7Types({ data, update, next, prev }) {
           <h4>Raíces del hogar</h4>
           <p>Para quienes ya tienen su sueño en proceso.</p>
           <button onClick={() => showNoVisModal("raices")} className="btn-house">
-            Descubre opciones de vivienda usada
+            Quiero aplicar 
           </button>
         </div>
 
@@ -102,7 +102,7 @@ export default function Step7Types({ data, update, next, prev }) {
           <h4>Cosechando frutos</h4>
           <p>Para quienes ya recibieron su vivienda en obra gris.</p>
           <button onClick={() => showNoVisModal("frutos")} className="btn-house">
-            Descubre proyectos inmobiliarios
+           Quiero aplicar 
           </button>
         </div>
 
